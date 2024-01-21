@@ -119,15 +119,19 @@ document.addEventListener('DOMContentLoaded', function(){
 			formAnswers.innerHTML = '';
 
 			switch(true) {
+                case (numberQuestion === 0):
+                    questionTitle.textContent = `${questions[indexQuestion].question}`;
+					renderAnswers(indexQuestion);
+                    nextButton.classList.remove('d-none');
+					prevButton.classList.add('d-none');
+                    sendButton.classList.add('d-none');
+					break;
 				case (numberQuestion >= 0 && numberQuestion <= questions.length - 1):
-					questionTitle.textContent = `${questions[indexQuestion].question}`;
+                    questionTitle.textContent = `${questions[indexQuestion].question}`;
 					renderAnswers(indexQuestion);
 					nextButton.classList.remove('d-none');
 					prevButton.classList.remove('d-none');
 					sendButton.classList.add('d-none');
-					break;
-				case (numberQuestion === 0):
-					prevButton.classList.add('d-none');
 					break;
 				case (numberQuestion === questions.length):
 					nextButton.classList.add('d-none');
